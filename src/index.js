@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const { yup, reach } = require('yup');
 const onChange = require('on-change');
  
+console.log('Working');
 // Создание схемы валидации с Yup
 const schema = yup.object().shape({
   url: yup.string().url().required().notOneOf(['список ранее введенных URL']).trim(),
@@ -30,7 +31,7 @@ const form = document.querySelector('.rss-form');
 const formData = {
   url: '',
 };
-console.log('Working')
+
 
 // Применение onChange для отслеживания изменений формы
 const watchedFormData = onChange(formData, (path, value) => {
