@@ -48,6 +48,7 @@ const watchedFormData = onChange(formData, (path, value) => {
 
 // Обработчик отправки формы
 form.addEventListener('submit', (event) => {
+    console.log('2321');
   event.preventDefault();
   
   const errors = validateForm(watchedFormData);
