@@ -30,6 +30,7 @@ const form = document.querySelector('.rss-form');
 const formData = {
   url: '',
 };
+console.log('Working')
 
 // Применение onChange для отслеживания изменений формы
 const watchedFormData = onChange(formData, (path, value) => {
