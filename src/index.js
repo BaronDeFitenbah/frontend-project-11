@@ -1,7 +1,7 @@
 import './style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import onChange from 'on-change';
-import { yup, reach } from 'yup';
+const { yup, reach } = require('yup');
+const onChange = require('on-change');
  
 // Создание схемы валидации с Yup
 const schema = yup.object().shape({
