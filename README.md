@@ -2,6 +2,8 @@
 
 The SPA application for the aggregation of RSS feeds.
 
+https://frontend-project-11-ten-chi.vercel.app/
+
 ----
 
 ## Hexlet tests and linter status:
@@ -9,8 +11,6 @@ The SPA application for the aggregation of RSS feeds.
 [![Actions Status](https://github.com/BaronDeFitenbah/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/BaronDeFitenbah/frontend-project-11/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/67f9c21016144829d6c8/maintainability)](https://codeclimate.com/github/BaronDeFitenbah/frontend-project-11/maintainability)
-
-[![Linter](https://github.com/rinat-lucky/frontend-project-11/actions/workflows/nodejs.yml/badge.svg)](https://github.com/BaronDeFitenbah/frontend-project-11/actions/workflows/nodejs.yml)
 
 ## Installation
 
