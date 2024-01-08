@@ -14,6 +14,7 @@ const schema = yup.object().shape({
 const validateForm = (formData) => {
   try {
     // Валидация данных формы
+    console.log(formData)
     schema.validateSync(formData, { abortEarly: false });
     return null; // В случае успешной валидации возвращаем null
   } catch (error) {
