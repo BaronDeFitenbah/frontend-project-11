@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import onChange from 'on-change';
  
 console.log('Working');
+console.log(yup);
 // Создание схемы валидации с Yup
 const schema = yup.object().shape({
   url: yup.string().url().required().notOneOf(['список ранее введенных URL']).trim(),
