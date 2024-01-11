@@ -52,11 +52,12 @@ const watchedFormData = onChange(formData, (path, value) => {
 
 // Обработчик отправки формы
 form.addEventListener('submit', (event) => {
-    console.log('2321');
+  const formData = new FormData(event.target);
   event.preventDefault();
   console.log(watchedFormData)
   
-  const errors = validateForm(watchedFormData);
+  const errors = validateForm(formData);
+  console.log(errors);
   
   if (!errors) {
     // Добавление логики для отправки данных, если они прошли валидацию
