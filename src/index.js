@@ -54,7 +54,7 @@ const watchedFormData = onChange(formData, (path, value) => {
 form.addEventListener('submit', (event) => {
   const formData = new FormData(event.target);
   event.preventDefault();
-  console.log(watchedFormData)
+  console.log(formData)
   
   const errors = validateForm(formData);
   console.log(errors);
