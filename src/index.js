@@ -5,7 +5,16 @@ import onChange from 'on-change';
 import resources from './locale/index.js';
 import i18n from 'i18next';
  
-
+document.addEventListener('DOMContentLoaded', () => {
+  const i18next = i18n.createInstance();
+  i18next.init({
+    lng: 'ru',
+    debug: true,
+    resources,
+  })
+    .then(() => console.log(i18n.t('feedback.invalidUrl')))
+    .catch((e) => e.message);
+});
 
   const i18next = i18n.createInstance();
   i18next.init({
