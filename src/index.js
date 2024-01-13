@@ -38,7 +38,7 @@ const formData = {
 // Применение onChange для отслеживания изменений формы
 const watchedFormData = onChange(formData, (path, value) => {
   const errors = validateForm(watchedFormData);
-  console.log(errors);
+  console.log('Инсайд ерр',errors);
 
   // Очистка предыдущих ошибок
   // И отображение новых ошибок (если они есть)
