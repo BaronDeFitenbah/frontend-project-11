@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as yup from 'yup';
 import onChange from 'on-change';
 import resources from './locale/index.js';
+import i18n from 'i18next';
  
 
 
