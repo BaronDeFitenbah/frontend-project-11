@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       postButtonRead: 'Просмотр',
     },
   })
-    .then(() => console.log('inside',i18n.t('posts')))
+    .then(() => console.log('inside',i18next.t('posts')))
     .catch((e) => e.message);
 });
 
@@ -89,8 +89,8 @@ const watchedFormData = onChange(formData, (path, value) => {
     // Проверяем, найден ли элемент
     if (feedbackElement) {
         // Меняем внутренний текст
-        console.log(i18n.t('feedback.invalidUrl'));
-        feedbackElement.textContent = i18n.t('feedback.invalidUrl');
+        console.log(i18next.t('feedback.invalidUrl'));
+        feedbackElement.textContent = i18next.t('feedback.invalidUrl');
     }
     // Отображение ошибок в интерфейсе
     // errors содержит объект с ошибками валидации
