@@ -2,7 +2,7 @@ import './style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as yup from 'yup';
 import onChange from 'on-change';
-import resources from './locales/index.js';
+import resources from './locale/index.js';
  
 
 
