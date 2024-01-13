@@ -44,6 +44,14 @@ const watchedFormData = onChange(formData, (path, value) => {
   // И отображение новых ошибок (если они есть)
   // Возможно, нужно добавить логику для подсветки полей с ошибками
   if (errors) {
+    // Находим элемент по классу
+    var feedbackElement = document.querySelector('.feedback');
+
+    // Проверяем, найден ли элемент
+    if (feedbackElement) {
+        // Меняем внутренний текст
+        feedbackElement.textContent = errors.url;
+    }
     // Отображение ошибок в интерфейсе
     // errors содержит объект с ошибками валидации
     // Например:
