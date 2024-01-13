@@ -7,7 +7,7 @@ console.log('Working');
 console.log(yup);
 // Создание схемы валидации с Yup
 const schema = yup.object().shape({
-  url: yup.string().url().required().notOneOf(['список ранее введенных URL']).trim(),
+  url: yup.string().url().required().trim(),
 });
 
 // Функция для валидации формы
@@ -56,7 +56,7 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   console.log(formData)
   
-  const errors = validateForm(formData.get('url'));
+  const errors = validateForm({url: formData.get('url')});
   console.log(errors);
   
   if (!errors) {
