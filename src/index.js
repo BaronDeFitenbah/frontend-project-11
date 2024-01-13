@@ -2,7 +2,18 @@ import './style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as yup from 'yup';
 import onChange from 'on-change';
+import resources from './locales/index.js';
  
+
+
+  const i18next = i18n.createInstance();
+  i18next.init({
+    lng: 'ru',
+    debug: true,
+    resources,
+  })
+
+
 console.log('Working');
 console.log(yup);
 // Создание схемы валидации с Yup
@@ -50,7 +61,7 @@ const watchedFormData = onChange(formData, (path, value) => {
     // Проверяем, найден ли элемент
     if (feedbackElement) {
         // Меняем внутренний текст
-        feedbackElement.textContent = errors.url;
+        feedbackElement.textContent = i18n.t('feedback.invalidUrl');
     }
     // Отображение ошибок в интерфейсе
     // errors содержит объект с ошибками валидации
