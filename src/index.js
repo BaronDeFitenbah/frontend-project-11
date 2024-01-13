@@ -38,6 +38,7 @@ const formData = {
 // Применение onChange для отслеживания изменений формы
 const watchedFormData = onChange(formData, (path, value) => {
   const errors = validateForm(watchedFormData);
+  console.log(errors);
 
   // Очистка предыдущих ошибок
   // И отображение новых ошибок (если они есть)
@@ -56,8 +57,10 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   console.log(formData)
   
-  const errors = validateForm({url: formData.get('url')});
-  console.log(errors);
+  // const errors = validateForm({url: formData.get('url')});
+  // console.log(errors);
+
+  watchedFormData.url = formData.get('url');
   
   if (!errors) {
     // Добавление логики для отправки данных, если они прошли валидацию
