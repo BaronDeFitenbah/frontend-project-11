@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       postButtonRead: 'Просмотр',
     },
   })
-    .then(() => console.log(i18n.t('feedback.invalidUrl')))
+    .then(() => console.log('inside',i18n.t('feedback.invalidUrl')))
     .catch((e) => e.message);
 });
 
