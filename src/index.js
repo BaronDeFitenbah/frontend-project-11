@@ -62,6 +62,7 @@ const watchedFormData = onChange(formData, (path, value) => {
     // Проверяем, найден ли элемент
     if (feedbackElement) {
         // Меняем внутренний текст
+        console.log(i18n.t('feedback.invalidUrl'));
         feedbackElement.textContent = i18n.t('feedback.invalidUrl');
     }
     // Отображение ошибок в интерфейсе
