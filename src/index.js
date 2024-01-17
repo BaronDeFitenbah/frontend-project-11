@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       postButtonRead: 'Просмотр',
     },
   })
-    .then(() => console.log('inside',i18next.t('posts')))
+    .then(() => console.log('inside',i18next.t('feedback.invalidUrl')))
     .catch((e) => e.message);
 });
 
@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log('Working');
 console.log(yup);
+fetch(`https://allorigins.hexlet.app/get?url=${encodeURIComponent('https://wikipedia.org')}`)
+  .then(response => {
+    if (response.ok) return response.json()
+    throw new Error('Network response was not ok.')
+  })
+  .then(data => console.log(data.contents));
 // Создание схемы валидации с Yup
 const schema = yup.object().shape({
   url: yup.string().url().required().trim(),
@@ -51,21 +57,9 @@ const schema = yup.object().shape({
 
 // Функция для валидации формы
 const validateForm = (formData) => {
-  try {
-    // Валидация данных формы
-    console.log(formData)
     schema.validateSync(formData, { abortEarly: false });
     return null; // В случае успешной валидации возвращаем null
-  } catch (error) {
-    console.log('err', error);
-    return error.inner.reduce((errors, err) => {
-      return {
-        ...errors,
-        [err.path]: err.message,
-      };
-    }, {});
-  }
-};
+}
 
 // Обработчик изменений в форме
 const form = document.querySelector('.rss-form');
@@ -104,12 +98,5 @@ form.addEventListener('submit', (event) => {
   const formData = new FormData(event.target);
   event.preventDefault();
   console.log(formData)
-  
-  // const errors = validateForm({url: formData.get('url')});
-  // console.log(errors);
-
   watchedFormData.url = formData.get('url');
 });
-
-
-// console.log("Hello World!");
