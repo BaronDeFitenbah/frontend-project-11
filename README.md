@@ -10,7 +10,7 @@ https://frontend-project-11-ten-chi.vercel.app/
 
 [![Actions Status](https://github.com/BaronDeFitenbah/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/BaronDeFitenbah/frontend-project-11/actions)
 
-[![Maintainability](https://codeclimate.com/github/BaronDeFitenbah/frontend-project-11/maintainability)]
+[![Maintainability](https://api.codeclimate.com/v1/badges/21db3a12c4b5e1f3fa3e/maintainability)](https://codeclimate.com/github/BaronDeFitenbah/frontend-project-11/maintainability)
 
 ## Installation
 
