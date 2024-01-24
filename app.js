@@ -70,6 +70,7 @@ export default (i18n) => {
       .then((validURL) => {
         console.log('after validate', validURL)
         watchedState.formState = 'sending';
+        console.log('Before getData', getData);
         return getData(validURL);
       })
       .then((rss) => {
