@@ -78,6 +78,7 @@ const createPostItem = (post, state, i18n) => {
 };
 
   const renderContent = (state, elements, i18n) => {
+    console.log('render content');
     const { postsContainer, feedsContainer } = elements;
     feedsContainer.replaceChildren();
     postsContainer.replaceChildren();
