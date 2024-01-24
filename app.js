@@ -67,6 +67,7 @@ export default (i18n) => {
         return getData(validURL);
       })
       .then((rss) => {
+        console.log(rss)
         const parsedRss = parse(rss.data.contents);
         parsedRss.feed.id = uniqueId();
         parsedRss.feed.feedLink = link;
