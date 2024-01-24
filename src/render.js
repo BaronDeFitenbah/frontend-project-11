@@ -140,6 +140,7 @@ const createPostItem = (post, state, i18n) => {
   };
 
   export default (state, elements, i18n) => (path) => {
+    console.log(path);
     switch (path) {
       case 'formState':
         return handleFormState(state, elements, i18n);
