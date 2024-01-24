@@ -119,6 +119,7 @@ const createPostItem = (post, state, i18n) => {
 
   const handleFormState = (state, elements, i18n) => {
     const { input, submit, feedback } = elements;
+    console.log(state.formState);
     switch (state.formState) {
       case 'filling':
         submit.disabled = false;
@@ -140,7 +141,6 @@ const createPostItem = (post, state, i18n) => {
   };
 
   export default (state, elements, i18n) => (path) => {
-    console.log(path);
     switch (path) {
       case 'formState':
         return handleFormState(state, elements, i18n);
