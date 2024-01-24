@@ -4,7 +4,7 @@ const renderFormError = (state, elements, i18n) => {
     input.classList.add('is-invalid');
     feedback.classList.remove('text-success');
     feedback.classList.add('text-danger');
-    errors = {
+    const errors = {
       'url':'errors.invalidUrl',
       'required':'errors.invalidRequired',
       'notOneOf':'errors.invalidNotOneOf',
