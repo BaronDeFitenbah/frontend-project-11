@@ -35,14 +35,16 @@ const renderFormError = (state, elements, i18n) => {
           modalCloseBtn = document.querySelector('.modal-close');
   
     const currentPost = state.posts.find((post) => post.postID === state.currentVisitedPostID);
-    modalTitle.textContent = currentPost.postTitle;
-    modalDescr.textContent = currentPost.postDescr;
-    modalReadBtn.setAttribute('href', `${currentPost.postLink}`);
-    modalReadBtn.textContent = i18n.t('modal.read');
-    modalCloseBtn.textContent = i18n.t('modal.close');
-    const postElem = document.querySelector(`[data-id="${currentPost.postID}"]`);
-    postElem.classList.remove('fw-bold');
-    postElem.classList.add('fw-normal');
+    if(currentPost){
+      modalTitle.textContent = currentPost.postTitle;
+      modalDescr.textContent = currentPost.postDescr;
+      modalReadBtn.setAttribute('href', `${currentPost.postLink}`);
+      modalReadBtn.textContent = i18n.t('modal.read');
+      modalCloseBtn.textContent = i18n.t('modal.close');
+      const postElem = document.querySelector(`[data-id="${currentPost.postID}"]`);
+      postElem.classList.remove('fw-bold');
+      postElem.classList.add('fw-normal');
+    }
   };
 
 const createPostItem = (post, state, i18n) => {
