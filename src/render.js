@@ -118,6 +118,7 @@ const createPostItem = (post, state, i18n) => {
   };
 
   const handleFormState = (state, elements, i18n) => {
+    console.log('чек', state.formState)
     const { input, submit, feedback } = elements;
     console.log('handle',state.formState);
     switch (state.formState) {
