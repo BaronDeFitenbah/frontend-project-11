@@ -61,8 +61,10 @@ export default (i18n) => {
   };
 
   const handleEnteredLink = (link) => {
+    console.log('beforelink', link);
     validate(link, state.rssLinks)
       .then((validURL) => {
+        console.log('after validate', validURL)
         watchedState.formState = 'sending';
         return getData(validURL);
       })
