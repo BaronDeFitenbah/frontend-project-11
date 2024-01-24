@@ -76,20 +76,27 @@ export default (i18n) => {
       .then((rss) => {
         console.log(rss)
         const parsedRss = parse(rss.data.contents);
+        console.log('going through parsed')
         parsedRss.feed.id = uniqueId();
         parsedRss.feed.feedLink = link;
+        console.log('before change state')
         watchedState.feeds.push(feed);
         parsedRss.posts.forEach((post) => {
           const { postTitle, postDescr, postLink } = post,
-            postID = uniqueId(),
-            feedID = feed.id;
+          postID = uniqueId(),
+          feedID = feed.id;
           watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
         });
+        console.log('before succes')
         state.rssLinks.push(link);
         state.error = '';
         watchedState.formState = 'success';
+        console.log()
       })
       .catch((err) => {
+        console.log(
+          'catch err'
+        )
         state.error = err.type ?? err.message.toLowerCase();
         watchedState.formState = 'error';
       });
