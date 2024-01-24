@@ -87,7 +87,7 @@ export default (i18n) => {
           console.log('going through post', post)
           const { postTitle, postDescr, postLink } = post,
           postID = uniqueId(),
-          feedID = feed.id;
+          feedID = parsedRss.feed.id;
           watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
         });
         console.log('before succes')
