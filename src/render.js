@@ -151,7 +151,7 @@ const createPostItem = (post, state, i18n) => {
       case 'posts':
         return renderContent(state, elements, i18n);
       case 'visitedPostsID':
-        handleReadButton(state, elements, i18n);
+        handleReadButton(state, i18n);
         return renderContent(state, elements, i18n);
       default:
         throw new Error(`Unknown path: ${path}`);
