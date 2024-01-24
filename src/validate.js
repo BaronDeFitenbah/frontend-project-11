@@ -1,3 +1,4 @@
+import * as yup from 'yup';
 export default (link, rssLinks) => {
     const schemaStr = yup.string().required().url().trim(),
         schemaMix = yup.mixed().notOneOf([rssLinks]);
