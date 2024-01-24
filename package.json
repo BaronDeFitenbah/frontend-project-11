@@ -26,6 +26,7 @@
     "serve": "webpack serve"
   },
   "dependencies": {
+    "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
     "i18next": "^23.7.16",
     "on-change": "^5.0.0",
