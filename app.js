@@ -7,7 +7,10 @@ import parse from './src/parse.js';
 const TIMER = 5000;
 
 export default (i18n) => {
-  const getData = (url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`);
+  const getData = (url) =>{ 
+    const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
+  console.log(res)
+  return res};
   const elements = {
     form: document.querySelector('form'),
     input: document.querySelector('#url-input'),
