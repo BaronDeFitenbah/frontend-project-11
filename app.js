@@ -81,7 +81,9 @@ export default (i18n) => {
         parsedRss.feed.feedLink = link;
         console.log('before change state')
         watchedState.feeds.push(feed);
+        console.log('after watched state')
         parsedRss.posts.forEach((post) => {
+          console.log('going through post', post)
           const { postTitle, postDescr, postLink } = post,
           postID = uniqueId(),
           feedID = feed.id;
