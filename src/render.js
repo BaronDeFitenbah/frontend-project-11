@@ -37,6 +37,7 @@ const renderFormError = (state, elements, i18n) => {
           modalCloseBtn = modal.querySelector('.modal-close');
   
     const currentPost = state.posts.find((post) => post.postID === state.currentVisitedPostID);
+    console.log('current POST', currentPost);
     if(currentPost){
       modalTitle.textContent = currentPost.postTitle;
       modalDescr.textContent = currentPost.postDescr;
