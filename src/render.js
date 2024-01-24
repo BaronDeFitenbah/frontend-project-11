@@ -28,11 +28,13 @@ const renderFormError = (state, elements, i18n) => {
     form.reset();
   };
 
-  const handleReadButton = (state, i18n) => {
-    const modalTitle = document.querySelector('.modal-title'),
-          modalDescr = document.querySelector('.modal-descr'),
-          modalReadBtn = document.querySelector('.modal-link'),
-          modalCloseBtn = document.querySelector('.modal-close');
+  const handleReadButton = (state, elements, i18n) => {
+    debugger;
+    const {modal} = elements; 
+    const modalTitle = modal.querySelector('.modal-title'),
+          modalDescr = modal.querySelector('.modal-descr'),
+          modalReadBtn = modal.querySelector('.modal-link'),
+          modalCloseBtn = modal.querySelector('.modal-close');
   
     const currentPost = state.posts.find((post) => post.postID === state.currentVisitedPostID);
     if(currentPost){
@@ -151,7 +153,7 @@ const createPostItem = (post, state, i18n) => {
       case 'posts':
         return renderContent(state, elements, i18n);
       case 'visitedPostsID':
-        handleReadButton(state, i18n);
+        handleReadButton(state, elements, i18n);
         return renderContent(state, elements, i18n);
       default:
         throw new Error(`Unknown path: ${path}`);
