@@ -1,5 +1,6 @@
 import onChange from 'on-change';
 import uniqueId from 'lodash/uniqueId.js';
+import axios from 'axios';
 import render from './src/render.js';
 import validate from './src/validate.js';
 import parse from './src/parse.js';
@@ -8,8 +9,8 @@ const TIMER = 5000;
 
 export default (i18n) => {
   const getData = (url) =>{ 
+    console.log(123)
     const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
-  console.log(res)
   return res};
   const elements = {
     form: document.querySelector('form'),
