@@ -65,44 +65,37 @@ export default (i18n) => {
   };
 
   const handleEnteredLink = (link) => {
-    console.log('beforelink', link);
     validate(link, state.rssLinks)
       .then((validURL) => {
-        console.log('after validate', validURL)
         watchedState.formState = 'sending';
-        console.log('Before getData', getData);
         return getData(validURL);
       })
       .then((rss) => {
-        console.log(rss)
         const parsedRss = parse(rss.data.contents);
-        console.log('going through parsed')
-        parsedRss.feed.id = uniqueId();
-        parsedRss.feed.feedLink = link;
-        console.log('before change state', watchedState.feeds)
-        console.log('before change','STATE', state.formState)
-        watchedState.feeds.push(parsedRss.feed);
-        console.log('after watched state')
-        parsedRss.posts.forEach((post) => {
-          console.log('going through post', post)
-          const { postTitle, postDescr, postLink } = post,
-          postID = uniqueId(),
-          feedID = parsedRss.feed.id;
-          watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
-        });
-        console.log('before succes')
+        addNewRss(parsedRss, link);
         state.rssLinks.push(link);
         state.error = '';
         watchedState.formState = 'success';
-        console.log()
       })
       .catch((err) => {
-        console.log(
-          'catch err'
-        )
         state.error = err.type ?? err.message.toLowerCase();
         watchedState.formState = 'error';
       });
+  };
+
+  const addNewRss = (parsedRss, link) => {
+    const { feed, posts } = parsedRss;
+    feed.id = uniqueId();
+    feed.feedLink = link;
+    watchedState.feeds.push(feed);
+    posts.forEach((post) => {
+      const { postTitle, postDescr, postLink } = post;
+      const postID = uniqueId();
+      const feedID = feed.id;
+      watchedState.posts.push({
+        postTitle, postDescr, postLink, postID, feedID,
+      });
+    });
   };
 
   elements.form.addEventListener('submit', (e) => {
