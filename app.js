@@ -5,7 +5,7 @@ import render from './src/render.js';
 import validate from './src/validate.js';
 import parse from './src/parse.js';
 
-const TIMER = 5000;
+const TIMER = 10000;
 
 export default (i18n) => {
   const getData = (url) =>{ 
