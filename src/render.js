@@ -38,7 +38,6 @@ const renderFormError = (state, elements, i18n) => {
   
     const currentPost = state.posts.find((post) => post.postID === state.currentVisitedPostID);
     console.log('current POST', currentPost);
-    if(currentPost){
       modalTitle.textContent = currentPost.postTitle;
       modalDescr.textContent = currentPost.postDescr;
       modalReadBtn.setAttribute('href', `${currentPost.postLink}`);
@@ -47,7 +46,7 @@ const renderFormError = (state, elements, i18n) => {
       const postElem = document.querySelector(`[data-id="${currentPost.postID}"]`);
       postElem.classList.remove('fw-bold');
       postElem.classList.add('fw-normal');
-    }
+      console.log('sdd')
   };
 
 const createPostItem = (post, state, i18n) => {
