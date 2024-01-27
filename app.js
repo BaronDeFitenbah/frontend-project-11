@@ -76,7 +76,21 @@ export default (i18n) => {
       .then((rss) => {
         console.log(rss)
         const parsedRss = parse(rss.data.contents);
-        addNewRss(parsedRss, link);
+        console.log('going through parsed')
+        parsedRss.feed.id = uniqueId();
+        parsedRss.feed.feedLink = link;
+        console.log('before change state', watchedState.feeds)
+        console.log('before change','STATE', state.formState)
+        watchedState.feeds.push(parsedRss.feed);
+        console.log('after watched state')
+        parsedRss.posts.forEach((post) => {
+          console.log('going through post', post)
+          const { postTitle, postDescr, postLink } = post,
+          postID = uniqueId(),
+          feedID = parsedRss.feed.id;
+          watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
+        });
+        console.log('before succes')
         state.rssLinks.push(link);
         state.error = '';
         watchedState.formState = 'success';
@@ -91,20 +105,6 @@ export default (i18n) => {
       });
   };
 
-  const addNewRss = (parsedRss, link) => {
-    const { feed, posts } = parsedRss;
-    feed.id = uniqueId();
-    feed.feedLink = link;
-    watchedState.feeds.push(feed);
-    posts.forEach((post) => {
-      const { postTitle, postDescr, postLink } = post;
-      const postID = uniqueId();
-      const feedID = feed.id;
-      watchedState.posts.push({
-        postTitle, postDescr, postLink, postID, feedID,
-      });
-    });
-  };
   elements.form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
