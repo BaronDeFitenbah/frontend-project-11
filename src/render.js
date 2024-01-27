@@ -50,29 +50,22 @@ const renderFormError = (state, elements, i18n) => {
   };
 
 const createPostItem = (post, state, i18n) => {
-  const postItem = document.createElement('li');
-  postItem.innerHTML = `
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0 border-end-0">
-    </li>
-  `;
-  const postLink = document.createElement('a');
-  postLink.innerHTML = `
+  const parser = new DOMParser();
+  const htmlString = `
+  <li class="list-group-item d-flex justify-content-between align-items-start border-0 border-end-0">
     <a href="${post.postLink}"
       class="${state.visitedPostsID.includes(post.postID) ? 'fw-normal' : 'fw-bold'}"
       data-id="${post.postID}" target="_blank" rel="noopener noreferrer">
       ${post.postTitle}
     </a>
-  `;
-
-  const postButton = document.createElement('button');
-  postButton.innerHTML = `
-  <button type="button" class="btn btn-outline-primary btn-sm"
-    data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#modal">
-    ${i18n.t('postButtonRead')}
-  </button>
+    <button type="button" class="btn btn-outline-primary btn-sm"
+      data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#modal">
+      ${i18n.t('postButtonRead')}
+    </button>
+  </li>
 `;
-  postItem.append(postLink);
-  postItem.append(postButton);
+const doc = parser.parseFromString(htmlString, 'text/html');
+const postItem = doc.body.firstChild;
   return postItem;
 };
 
