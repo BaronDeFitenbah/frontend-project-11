@@ -28,7 +28,7 @@ const renderFormError = (state, elements, i18n) => {
     form.reset();
   };
 
-  const handleReadButton = (state, elements, i18n) => {
+  const showPost = (state, elements, i18n) => {
     debugger;
     const {modal} = elements; 
     const modalTitle = modal.querySelector('.modal-title'),
@@ -37,7 +37,6 @@ const renderFormError = (state, elements, i18n) => {
           modalCloseBtn = modal.querySelector('.modal-close');
   
     const currentPost = state.posts.find((post) => post.postID === state.currentVisitedPostID);
-    console.log('current POST', currentPost);
       modalTitle.textContent = currentPost.postTitle;
       modalDescr.textContent = currentPost.postDescr;
       modalReadBtn.setAttribute('href', `${currentPost.postLink}`);
@@ -46,7 +45,6 @@ const renderFormError = (state, elements, i18n) => {
       const postElem = document.querySelector(`[data-id="${currentPost.postID}"]`);
       postElem.classList.remove('fw-bold');
       postElem.classList.add('fw-normal');
-      console.log('sdd')
   };
 
 const createPostItem = (post, state, i18n) => {
@@ -70,7 +68,6 @@ const createPostItem = (post, state, i18n) => {
 };
 
   const renderContent = (state, elements, i18n) => {
-    console.log('render content');
     const { postsContainer, feedsContainer } = elements;
     feedsContainer.replaceChildren();
     postsContainer.replaceChildren();
@@ -115,9 +112,7 @@ const createPostItem = (post, state, i18n) => {
 
   const handleFormState = (state, elements, i18n) => {
     debugger;
-    console.log('чек', state.formState)
     const { input, submit, feedback } = elements;
-    console.log('handle',state.formState);
     switch (state.formState) {
       case 'filling':
         submit.disabled = false;
@@ -146,7 +141,7 @@ const createPostItem = (post, state, i18n) => {
       case 'posts':
         return renderContent(state, elements, i18n);
       case 'visitedPostsID':
-        handleReadButton(state, elements, i18n);
+        showPost(state, elements, i18n);
         return renderContent(state, elements, i18n);
       default:
         throw new Error(`Unknown path: ${path}`);

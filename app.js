@@ -9,7 +9,6 @@ const TIMER = 5000;
 
 export default (i18n) => {
   const getData = (url) =>{ 
-    console.log(123)
     const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
   return res};
   const elements = {
@@ -65,41 +64,27 @@ export default (i18n) => {
   };
 
   const handleEnteredLink = (link) => {
-    console.log('beforelink', link);
     validate(link, state.rssLinks)
       .then((validURL) => {
-        console.log('after validate', validURL)
         watchedState.formState = 'sending';
-        console.log('Before getData', getData);
         return getData(validURL);
       })
       .then((rss) => {
-        console.log(rss)
         const parsedRss = parse(rss.data.contents);
-        console.log('going through parsed')
         parsedRss.feed.id = uniqueId();
         parsedRss.feed.feedLink = link;
-        console.log('before change state', watchedState.feeds)
-        console.log('before change','STATE', state.formState)
         watchedState.feeds.push(parsedRss.feed);
-        console.log('after watched state')
         parsedRss.posts.forEach((post) => {
-          console.log('going through post', post)
           const { postTitle, postDescr, postLink } = post,
           postID = uniqueId(),
           feedID = parsedRss.feed.id;
           watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
         });
-        console.log('before succes')
         state.rssLinks.push(link);
         state.error = '';
         watchedState.formState = 'success';
-        console.log()
       })
       .catch((err) => {
-        console.log(
-          'catch err'
-        )
         state.error = err.type ?? err.message.toLowerCase();
         watchedState.formState = 'error';
       });
