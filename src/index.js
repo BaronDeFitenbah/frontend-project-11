@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.scss';
+import 'bootstrap';
 import resources from './locale/index.js';
 import i18n from 'i18next';
 import app from '../app.js';
