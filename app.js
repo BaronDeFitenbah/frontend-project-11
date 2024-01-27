@@ -5,7 +5,7 @@ import render from './src/render.js';
 import validate from './src/validate.js';
 import parse from './src/parse.js';
 
-const TIMER = 10000;
+const TIMER = 5000;
 
 export default (i18n) => {
   const getData = (url) =>{ 
@@ -65,19 +65,27 @@ export default (i18n) => {
   };
 
   const handleEnteredLink = (link) => {
+    console.log('beforelink', link);
     validate(link, state.rssLinks)
       .then((validURL) => {
+        console.log('after validate', validURL)
         watchedState.formState = 'sending';
+        console.log('Before getData', getData);
         return getData(validURL);
       })
       .then((rss) => {
+        console.log(rss)
         const parsedRss = parse(rss.data.contents);
         addNewRss(parsedRss, link);
         state.rssLinks.push(link);
         state.error = '';
         watchedState.formState = 'success';
+        console.log()
       })
       .catch((err) => {
+        console.log(
+          'catch err'
+        )
         state.error = err.type ?? err.message.toLowerCase();
         watchedState.formState = 'error';
       });
@@ -97,7 +105,6 @@ export default (i18n) => {
       });
     });
   };
-
   elements.form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
