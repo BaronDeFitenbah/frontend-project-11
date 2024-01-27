@@ -50,8 +50,8 @@ const renderFormError = (state, elements, i18n) => {
   };
 
 const createPostItem = (post, state, i18n) => {
-  const parser = new DOMParser();
-  const htmlString = `
+  const parser = new DOMParser(),
+    htmlString = `
   <li class="list-group-item d-flex justify-content-between align-items-start border-0 border-end-0">
     <a href="${post.postLink}"
       class="${state.visitedPostsID.includes(post.postID) ? 'fw-normal' : 'fw-bold'}"
@@ -63,9 +63,9 @@ const createPostItem = (post, state, i18n) => {
       ${i18n.t('postButtonRead')}
     </button>
   </li>
-`;
-const doc = parser.parseFromString(htmlString, 'text/html');
-const postItem = doc.body.firstChild;
+`,
+ doc = parser.parseFromString(htmlString, 'text/html'),
+ postItem = doc.body.firstChild;
   return postItem;
 };
 
@@ -99,20 +99,18 @@ const postItem = doc.body.firstChild;
   };
 
   const createFeedItem = (feed) => {
-    const feedItem = document.createElement('li');
-    feedItem.setAttribute('class', 'list-group-item border-0 border-end-0');
-    feedItem.innerHTML =`
+    const htmlString = `
     <li class="list-group-item border-0 border-end-0">
+      <h3 class="h6 m-0">${feed.feedTitle}</h3>
+      <p class="m-0 small text-black-50">${feed.feedDescr}</p>
     </li>
   `;
-    const feedHeader = document.createElement('h3');
-    feedHeader.innerHTML = `<h3 class="h6 m-0">
-    ${feed.feedTitle} </h3>`;
-    feedItem.append(feedHeader);
-    const feedBody = document.createElement('p');
-    feedBody.innerHTML = `<p class= m-0 small text-black-50>${feed.feedDescr}</p> `
-    feedItem.append(feedBody);
-    return feedItem;
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, 'text/html');
+  const feedItem = doc.body.firstChild;
+
+  return feedItem;
   };
 
   const handleFormState = (state, elements, i18n) => {
