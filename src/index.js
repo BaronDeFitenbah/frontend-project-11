@@ -1,9 +1,9 @@
 import './style.scss';
 import 'bootstrap';
-import resources from './locale/index.js';
 import i18n from 'i18next';
+import resources from './locale/index.js';
 import app from '../app.js';
- 
+
 document.addEventListener('DOMContentLoaded', () => {
   const i18next = i18n.createInstance();
   i18next.init({

@@ -8,9 +8,10 @@ import parse from './src/parse.js';
 const TIMER = 5000;
 
 export default (i18n) => {
-  const getData = (url) =>{ 
-    const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
-  return res};
+  const getData = (url) => {
+    const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`);
+    return res;
+  };
   const elements = {
     form: document.querySelector('form'),
     input: document.querySelector('#url-input'),
@@ -75,10 +76,12 @@ export default (i18n) => {
         parsedRss.feed.feedLink = link;
         watchedState.feeds.push(parsedRss.feed);
         parsedRss.posts.forEach((post) => {
-          const { postTitle, postDescr, postLink } = post,
-          postID = uniqueId(),
-          feedID = parsedRss.feed.id;
-          watchedState.posts.push({ postTitle, postDescr, postLink, postID, feedID });
+          const { postTitle, postDescr, postLink } = post;
+          const postID = uniqueId();
+          const feedID = parsedRss.feed.id;
+          watchedState.posts.push({
+            postTitle, postDescr, postLink, postID, feedID,
+          });
         });
         state.rssLinks.push(link);
         state.error = '';
