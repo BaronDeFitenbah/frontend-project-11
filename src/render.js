@@ -119,7 +119,7 @@ const createPostItem = (post, state, i18n) => {
         break;
       case 'sending':
         submit.disabled = true;
-        feedback.textContent = i18n.t('feedback.loading');
+        feedback.textContent = i18n.t('feedback.success');
         break;
       case 'success':
         return renderFormSuccess(elements, i18n);
