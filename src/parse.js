@@ -1,14 +1,14 @@
 export default (data) => {
-    const parser = new DOMParser();
-    const Doc = parser.parseFromString(data, 'application/xml');
+    const parser = new DOMParser(),
+    xml = parser.parseFromString(data, 'application/xml');
   
-    if (Doc.querySelector('parsererror')) throw new Error('invalid rss');
+    if (xml.querySelector('parsererror')) throw new Error('invalid rss');
   
-    const feedTitle = Doc.querySelector('title').textContent;
-    const feedDescr = Doc.querySelector('description').textContent;
+    const feedTitle = xml.querySelector('title').textContent;
+    const feedDescr = xml.querySelector('description').textContent;
   
     const posts = [];
-    const postsElems = Doc.querySelectorAll('item');
+    const postsElems = xml.querySelectorAll('item');
     postsElems.forEach((post) => {
       const postTitle = post.querySelector('title').textContent;
       const postDescr = post.querySelector('description').textContent;
