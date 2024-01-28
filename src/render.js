@@ -93,7 +93,7 @@ const createPostItem = (post, state, i18n) => {
     itemsList.setAttribute('class', 'list-group border-0 rounded-0');
     innerContainer.append(itemsList);
     return container.append(innerContainer);
-  },
+  };
 
   const createFeedItem = (feed) => {
     const htmlString = `
