@@ -11,8 +11,8 @@ export default (i18n) => {
   const getData = (url) =>{ 
     const res = axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
   return res
-},
-  elements = {
+};
+const  elements = {
     form: document.querySelector('form'),
     input: document.querySelector('#url-input'),
     submit: document.querySelector('[type="submit"]'),
@@ -22,16 +22,16 @@ export default (i18n) => {
     modal: document.querySelector('.modal'),
   };
 
-  state = {
+const  state = {
     formState: 'filling',
     rssLinks: [],
     feeds: [],
     posts: [],
     visitedPostsID: [],
-  },
-   watchedState = onChange(state, render(state, elements, i18n)),
+  };
+const   watchedState = onChange(state, render(state, elements, i18n));
 
-  updateRss = () => {
+const  updateRss = () => {
     const promises = state.rssLinks.map((url) => {
       getData(url)
         .then((rss) => {
@@ -62,9 +62,9 @@ export default (i18n) => {
       .catch((error) => {
         throw new Error(error);
       });
-  },
+  };
 
-  handleEnteredLink = (link) => {
+const  handleEnteredLink = (link) => {
     validate(link, state.rssLinks)
       .then((validURL) => {
         watchedState.formState = 'sending';
