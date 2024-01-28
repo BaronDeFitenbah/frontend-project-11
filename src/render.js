@@ -29,7 +29,6 @@ const renderFormError = (state, elements, i18n) => {
   };
 
   const showPost = (state, elements, i18n) => {
-    debugger;
     const {modal} = elements; 
     const modalTitle = modal.querySelector('.modal-title'),
           modalDescr = modal.querySelector('.modal-descr'),
@@ -111,7 +110,6 @@ const createPostItem = (post, state, i18n) => {
   };
 
   const handleFormState = (state, elements, i18n) => {
-    debugger;
     const { input, submit, feedback } = elements;
     switch (state.formState) {
       case 'filling':
