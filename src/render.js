@@ -16,9 +16,9 @@ const renderFormError = (state, elements, i18n) => {
     } else {
       feedback.textContent = i18n.t('errors.invalidUnknown')
     }
-  };
+  },
 
-  const renderFormSuccess = (elements, i18n) => {
+  renderFormSuccess = (elements, i18n) => {
     const { form, input, submit, feedback } = elements;
     submit.disabled = false;
     input.classList.remove('is-invalid');
@@ -26,9 +26,9 @@ const renderFormError = (state, elements, i18n) => {
     feedback.classList.add('text-success');
     feedback.textContent = i18n.t('feedback.success');
     form.reset();
-  };
+  },
 
- const  showPost = (state, elements, i18n) => {
+  showPost = (state, elements, i18n) => {
     debugger;
     const {modal} = elements; 
     const modalTitle = modal.querySelector('.modal-title'),
@@ -45,9 +45,9 @@ const renderFormError = (state, elements, i18n) => {
       const postElem = document.querySelector(`[data-id="${currentPost.postID}"]`);
       postElem.classList.remove('fw-bold');
       postElem.classList.add('fw-normal');
-  };
+  },
 
-const createPostItem = (post, state, i18n) => {
+createPostItem = (post, state, i18n) => {
   const parser = new DOMParser(),
     htmlString = `
   <li class="list-group-item d-flex justify-content-between align-items-start border-0 border-end-0">
@@ -65,9 +65,9 @@ const createPostItem = (post, state, i18n) => {
  doc = parser.parseFromString(htmlString, 'text/html'),
  postItem = doc.body.firstChild;
   return postItem;
-};
+},
 
-const renderContent = (state, elements, i18n) => {
+  renderContent = (state, elements, i18n) => {
     const { postsContainer, feedsContainer } = elements;
     feedsContainer.replaceChildren();
     postsContainer.replaceChildren();
@@ -84,18 +84,18 @@ const renderContent = (state, elements, i18n) => {
       postsList.prepend(createPostItem(post, state, i18n));
     });
     return state;
-  };
+  },
   
-const   createInnerContainer = (container, i18n) => {
+  createInnerContainer = (container, i18n) => {
     const innerContainer = document.createElement('div'),
       itemsList = document.createElement('ul');
     innerContainer.innerHTML = `<div class="card-body card border-0"><h2 class="card-title h4">${i18n.t(`${container.id}`)}</h2></div>`;
     itemsList.setAttribute('class', 'list-group border-0 rounded-0');
     innerContainer.append(itemsList);
     return container.append(innerContainer);
-  };
+  },
 
-const createFeedItem = (feed) => {
+  createFeedItem = (feed) => {
     const htmlString = `
     <li class="list-group-item border-0 border-end-0">
       <h3 class="h6 m-0">${feed.feedTitle}</h3>
@@ -108,9 +108,9 @@ const createFeedItem = (feed) => {
   feedItem = doc.body.firstChild;
 
   return feedItem;
-  };
+  },
 
-const  handleFormState = (state, elements, i18n) => {
+  handleFormState = (state, elements, i18n) => {
     debugger;
     const { input, submit, feedback } = elements;
     switch (state.formState) {
