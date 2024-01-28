@@ -1,7 +1,4 @@
 import * as yup from 'yup';
 export default (link, rssLinks) => {
-    const schemaStr = yup.string().required().url().trim(),
-        schemaMix = yup.mixed().notOneOf([rssLinks]);
-    return schemaStr.validate(link)
-      .then((url) => schemaMix.validate(url));
-}
+    const schemaStr = yup.string().required().notOneOf(rssLinks).url().trim();
+    return schemaStr.validate(link)}
